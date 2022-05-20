@@ -50,6 +50,9 @@ int main(int argc, char **argv)
 
 void sleep_comms()
 {
+    // Sleep the comms to stop over-stressing the Dynamixels
+
     ros::Duration(0.005).sleep();
+    
     return;
 }

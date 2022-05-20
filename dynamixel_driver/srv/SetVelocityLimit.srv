@@ -1,0 +1,4 @@
+uint8 id
+uint32 velocityLimit
+---
+int32 result

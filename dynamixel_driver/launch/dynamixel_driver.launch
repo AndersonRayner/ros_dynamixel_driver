@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="dynamixel_driver" type="dynamixel_driver" name="dynamixel_driver1" 
+        output="screen"
+        respawn="true" >
+    </node>
+</launch>

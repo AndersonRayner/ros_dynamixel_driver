@@ -1,0 +1,25 @@
+uint8 id
+---
+uint8 velocityProfile
+uint8 followingError
+
+uint8 profileOngoing
+uint8 inPosition
+
+int32 result
+
+# Constants
+uint8 TRAPEZOIDAL_PROFILE = 3
+uint8 TRIANGULAR_PROFILE = 2
+uint8 RECTANGULAR_PROFILE = 1
+uint8 STEP_PROFILE = 0
+
+uint8 NOT_FOLLOWING = 1
+uint8 FOLLOWING = 0
+
+uint8 PROFILE_IN_PROGRESS = 1
+uint8 PROFILE_COMPLETED = 0
+
+uint8 ARRIVED = 1
+uint8 NOT_ARRIVED = 0
+

@@ -1,0 +1,4 @@
+uint8 id
+---
+uint8 operatingMode
+int32 result

@@ -1,0 +1,25 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		// Dynamixel driver launch
+		{
+			"name": "(DEBUG) Dynamixel Driver",
+			"type": "ros",
+			"request": "launch",
+			"target": "${workspaceFolder}/launch/dynamixel_driver.launch",
+			"preLaunchTask": "catkin: debug", // tasks.json
+		},
+
+		{
+			"name": "Dynamixel Driver",
+			"type": "ros",
+			"request": "launch",
+			"target": "${workspaceFolder}/launch/dynamixel_driver.launch",
+			"preLaunchTask": "catkin: build", // tasks.json
+		},
+
+	]
+}

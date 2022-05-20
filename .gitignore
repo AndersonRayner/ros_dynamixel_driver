@@ -1,0 +1,8 @@
+# git ignore for the dynamixel driver
+
+# VS Code Files
+*.code-workspace
+settings.json
+browse.vc.db*
+c_cpp_properties.json
+

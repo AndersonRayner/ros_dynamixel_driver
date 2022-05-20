@@ -7,8 +7,15 @@ Tested Dynamixel servos
 ## Getting the Code
 This code relies on the Dynamixel SDK, so you must clone the code recursively
 ```
-https://github.com/AndersonRayner/dynamixel_ros_driver.git --recursive
+git clone https://github.com/AndersonRayner/dynamixel_ros_driver.git --recursive
 ```
+
+Given this is probably part of a larger project, you can also add it as a submodule in your catkin workspace
+```
+git submodule add https://github.com/AndersonRayner/dynamixel_ros_driver.git
+```
+Just remember to `--init` and `--update` submodules after adding it.
+
 
 ## Interfacing
 This code is designed to interface via the U2D2 adaptor (from Dynamixel) which creates a USB-to-Dynamixel bridge.

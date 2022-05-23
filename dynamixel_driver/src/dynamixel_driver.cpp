@@ -1,43 +1,49 @@
 
 #include "dynamixel_driver/dynamixel_driver.h"
 
-// Protocol version
-#define PROTOCOL_VERSION 2.0 // Default Protocol version of DYNAMIXEL X series.
-
-// Default setting
-#define BAUDRATE 57600                  // Default Baudrate of DYNAMIXEL X series
-#define DEVICE_NAME "/dev/ttyDynamixel" // [Linux] To find assigned port, use "$ ls /dev/ttyUSB*" command
-
-dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICE_NAME);
-dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
+dynamixel::PortHandler *portHandler;// = dynamixel::PortHandler::getPortHandler(DEVICE_NAME);
+dynamixel::PacketHandler *packetHandler;// = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
 int main(int argc, char **argv)
 {
 
+    // Init the ROS node
+    ros::init(argc, argv, "dynamixel_driver_node");
+    ros::NodeHandle nh("~");
+
+    // Get the port parameters
+    std::string port_name;
+    int baud_rate;
+    float protocol_version;
+
+    nh.param<std::string>("port_name", port_name, std::string("/dev/ttyUSB0"));
+    nh.param("baud_rate", baud_rate, 115200);
+    nh.param("protocol_version", protocol_version, 2.0f);
+
+    ROS_INFO("Attempting to open %s::%d, protocol %.1f",port_name.c_str(),baud_rate,protocol_version);
+
     // Open the port and set the baud rates
+    portHandler = dynamixel::PortHandler::getPortHandler(port_name.c_str());
+    packetHandler = dynamixel::PacketHandler::getPacketHandler(protocol_version);
+
     if (!portHandler->openPort())
     {
-        ROS_ERROR("Failed to open the port %s!",DEVICE_NAME);
+        ROS_ERROR("Failed to open the port %s!",port_name.c_str());
         return -1;
     }
 
-    if (!portHandler->setBaudRate(BAUDRATE))
+    if (!portHandler->setBaudRate(baud_rate))
     {
         ROS_ERROR("Failed to set the baudrate!");
         return -1;
     }
 
-    // Init the ROS node
-    ros::init(argc, argv, "dynamixel_driver_node");
-    
-    ros::NodeHandle n;
-
     // Init subscribers, publishers, services...
-    init_subscribers(n);
-    init_services(n);
+    init_subscribers(nh);
+    init_services(nh);
 
     // Update user
-    ROS_INFO("Dynamixel driver initialised on port %s::%d",DEVICE_NAME,BAUDRATE);
+    ROS_INFO("Dynamixel driver initialised on port %s::%d",port_name.c_str(),baud_rate);
 
     // Spin forever, everything is callback based
     ros::spin();

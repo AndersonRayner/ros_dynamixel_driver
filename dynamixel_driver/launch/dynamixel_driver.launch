@@ -2,5 +2,10 @@
     <node pkg="dynamixel_driver" type="dynamixel_driver" name="dynamixel_driver1" 
         output="screen"
         respawn="true" >
+
+        <param name="port_name"        value="/dev/ttyDynamixel" />
+        <param name="baud_rate"        value="115200" />
+        <param name="protocol_version" value="2.0" />
+
     </node>
 </launch>

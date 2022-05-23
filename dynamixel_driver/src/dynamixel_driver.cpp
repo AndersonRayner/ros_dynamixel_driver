@@ -1,8 +1,8 @@
 
 #include "dynamixel_driver/dynamixel_driver.h"
 
-dynamixel::PortHandler *portHandler;// = dynamixel::PortHandler::getPortHandler(DEVICE_NAME);
-dynamixel::PacketHandler *packetHandler;// = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
+dynamixel::PortHandler *portHandler;
+dynamixel::PacketHandler *packetHandler;
 
 int main(int argc, char **argv)
 {

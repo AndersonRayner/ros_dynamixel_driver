@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     float protocol_version;
 
     nh.param<std::string>("port_name", port_name, std::string("/dev/ttyUSB0"));
-    nh.param("baud_rate", baud_rate, 115200);
+    nh.param("baud_rate", baud_rate, 57600);
     nh.param("protocol_version", protocol_version, 2.0f);
 
     ROS_INFO("Attempting to open %s::%d, protocol %.1f",port_name.c_str(),baud_rate,protocol_version);
@@ -38,8 +38,7 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    // Init subscribers, publishers, services...
-    init_subscribers(nh);
+    // Init subscribers
     init_services(nh);
 
     // Update user

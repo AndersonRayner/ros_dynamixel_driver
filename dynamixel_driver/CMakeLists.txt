@@ -21,16 +21,6 @@ find_package(catkin REQUIRED
 ################################################################################
 # Declare ROS messages, services and actions
 ################################################################################
-## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-    SetGoalPositionMsg.msg
-    SetGoalVelocityMsg.msg
-    #SetHomingOffsetMsg.msg
-    #SetLedEnableMsg.msg
-    #SetOperatingModeMsg.msg
-    #SetTorqueEnableMsg.msg
-)
 
 ## Generate services in the 'srv' folder
 add_service_files(
@@ -86,7 +76,6 @@ catkin_package(
 # Libraries
 add_library(${PROJECT_NAME}_libraries
   src/services.cpp
-  src/subscribers.cpp
 )
 
 ################################################################################

@@ -13,7 +13,6 @@
 void sleep_comms(void); // Sleep the comms for the dynamixels
 
 // Functions
-void init_subscribers(ros::NodeHandle n);
 void init_services(ros::NodeHandle n);
 
 // Variables

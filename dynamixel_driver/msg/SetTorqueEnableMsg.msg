@@ -1,6 +1,0 @@
-uint8 id
-uint8 torqueEnable
-
-# Torque Enable Codes
-uint8 TORQUE_DISABLE = 0
-uint8 TORQUE_ENABLE = 1

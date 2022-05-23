@@ -1,0 +1,13 @@
+<launch>
+
+    <!-- Launch the Dynamixel Driver -->
+    <include file="$(find dynamixel_driver)/launch/dynamixel_driver.launch" />
+
+    <!-- Launch the example file -->
+    <node pkg="dynamixel_driver_examples" type="drive_mode" name="drive_mode"
+        output="screen"
+        respawn="true"
+        launch-prefix="bash -c 'sleep 3; $0 $@'" >
+    </node>
+
+</launch>

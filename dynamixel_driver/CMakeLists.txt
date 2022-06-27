@@ -14,52 +14,8 @@ find_package(catkin REQUIRED
   COMPONENTS
     roscpp
     std_msgs
-    message_generation
     dynamixel_sdk
-)
-
-################################################################################
-# Declare ROS messages, services and actions
-################################################################################
-
-## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-
-    GetGoalPosition.srv
-    GetHomingOffset.srv
-    GetModelInfo.srv
-    GetModelNumber.srv
-    GetMoving.srv
-    GetMovingStatus.srv
-    GetOperatingMode.srv
-    GetPresentCurrent.srv
-    GetPresentInputVoltage.srv
-    GetPresentPosition.srv
-    GetPresentPwm.srv
-    GetPresentTemperature.srv
-    GetPresentVelocity.srv
-    GetRealtimeTick.srv
-    GetTorqueEnable.srv
-    
-    SetGoalCurrent.srv
-    SetGoalPosition.srv
-    SetGoalVelocity.srv
-    SetHomingOffset.srv
-    SetLedEnable.srv
-    SetOperatingMode.srv
-    SetProfileVelocity.srv
-    SetTorqueEnable.srv
-    SetVelocityIGain.srv
-    SetVelocityLimit.srv
-    SetVelocityPGain.srv
-
-)
-
-## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-    std_msgs
+    dynamixel_msgs
 )
 
 ################################################################################
@@ -70,6 +26,7 @@ catkin_package(
     roscpp
     std_msgs
     dynamixel_sdk
+    dynamixel_msgs
 #  DEPENDS system_lib
 )
 

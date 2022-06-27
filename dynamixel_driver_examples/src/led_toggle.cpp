@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 
-#include "dynamixel_driver/SetLedEnable.h"
+#include "dynamixel_msgs/SetLedEnable.h"
 
 uint8_t id = 0x01;  // Target dynamixel ID (0xFE is broadcast)
                     //   Broadcast won't give feedback so return might fail
@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "led_toggle");
   ros::NodeHandle n;
-  ros::ServiceClient setLedEnableClient = n.serviceClient<dynamixel_driver::SetLedEnable>("/ledEnable/set", true);
+  ros::ServiceClient setLedEnableClient = n.serviceClient<dynamixel_msgs::SetLedEnable>("/ledEnable/set", true);
 
   ros::Rate loop_rate(1);
 
@@ -19,14 +19,14 @@ int main(int argc, char **argv)
   {
 
     // Assemble the request packet
-    dynamixel_driver::SetLedEnable srv;
+    dynamixel_msgs::SetLedEnable srv;
     srv.request.id = id;
 
     if (count % 2) 
     {
-        srv.request.ledEnable = dynamixel_driver::SetLedEnable::Request::LED_ON; 
+        srv.request.ledEnable = dynamixel_msgs::SetLedEnable::Request::LED_ON; 
     } else {
-        srv.request.ledEnable = dynamixel_driver::SetLedEnable::Request::LED_OFF;
+        srv.request.ledEnable = dynamixel_msgs::SetLedEnable::Request::LED_OFF;
     }
 
     // Call the service

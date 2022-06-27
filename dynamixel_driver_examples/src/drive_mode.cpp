@@ -21,9 +21,9 @@ void start_extended_position_control()
   // Change the mode
   do
   {
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)                   errors++;
-    if (setOperatingMode(dynamixel_driver::SetOperatingMode::Request::MODE_EXTENDED_POSITION_CONTROL) != 0) errors++;
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)                    errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)                   errors++;
+    if (setOperatingMode(dynamixel_msgs::SetOperatingMode::Request::MODE_EXTENDED_POSITION_CONTROL) != 0) errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)                    errors++;
 
     if (setGoalPosition(2000) != 0) errors++;
 
@@ -50,9 +50,9 @@ void start_position_control()
 
   do
   {
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)          errors++;
-    if (setOperatingMode(dynamixel_driver::SetOperatingMode::Request::MODE_POSITION_CONTROL) != 0) errors++;
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)           errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)          errors++;
+    if (setOperatingMode(dynamixel_msgs::SetOperatingMode::Request::MODE_POSITION_CONTROL) != 0) errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)           errors++;
 
     if (setGoalPosition(0) != 0)
       errors++;
@@ -82,9 +82,9 @@ void start_velocity_control()
   // Change the mode
   do
   {
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)         errors++;
-    if (setOperatingMode(dynamixel_driver::SetOperatingMode::Request::MODE_VELOCITY_CONTROL) != 0) errors++;
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)          errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)         errors++;
+    if (setOperatingMode(dynamixel_msgs::SetOperatingMode::Request::MODE_VELOCITY_CONTROL) != 0) errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)          errors++;
 
     if (setGoalVelocity(-50) != 0) errors++;
 
@@ -112,9 +112,9 @@ void start_current_control()
   // Change the mode
   do
   {
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)         errors++;
-    if (setOperatingMode(dynamixel_driver::SetOperatingMode::Request::MODE_CURRENT_CONTROL) != 0) errors++;
-    if (setTorqueEnable(dynamixel_driver::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)          errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_DISABLE) != 0)         errors++;
+    if (setOperatingMode(dynamixel_msgs::SetOperatingMode::Request::MODE_CURRENT_CONTROL) != 0) errors++;
+    if (setTorqueEnable(dynamixel_msgs::SetTorqueEnable::Request::TORQUE_ENABLE) != 0)          errors++;
 
     if (setGoalCurrent(50) != 0) errors++;
 

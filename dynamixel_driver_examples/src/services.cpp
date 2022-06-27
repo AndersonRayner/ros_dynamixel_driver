@@ -26,28 +26,30 @@ ros::ServiceClient setVelocityIGainClient;
 void init_services(ros::NodeHandle n)
 {
  
- // Add the torque service in here
-  getHomingOffsetClient    = n.serviceClient<dynamixel_driver::GetHomingOffset>("/homingOffset/get", true);
-  getGoalPositionClient    = n.serviceClient<dynamixel_driver::GetGoalPosition>("/goalPosition/get", true);
-  getMovingStatusClient    = n.serviceClient<dynamixel_driver::GetMovingStatus>("/movingStatus/get", true);
-  getPresentCurrentClient  = n.serviceClient<dynamixel_driver::GetPresentCurrent>("/presentCurrent/get", true);
-  getPresentPositionClient = n.serviceClient<dynamixel_driver::GetPresentPosition>("/presentPosition/get", true);
-  getPresentPwmClient      = n.serviceClient<dynamixel_driver::GetPresentPwm>("/presentPwm/get", true);
-  getPresentVelocityClient = n.serviceClient<dynamixel_driver::GetPresentVelocity>("/presentVelocity/get", true);
-  getTorqueEnableClient    = n.serviceClient<dynamixel_driver::GetTorqueEnable>("/torqueEnable/get", true);
-  getOperatingModeClient   = n.serviceClient<dynamixel_driver::GetOperatingMode>("/operatingMode/get", true);
+  // Add the torque service in here
+  //    The second argument 'true' is important for speed as this means ros doesn't have to 
+  //    renegotiate the connection each time the service is called.
+  getHomingOffsetClient    = n.serviceClient<dynamixel_msgs::GetHomingOffset>("/homingOffset/get", true);
+  getGoalPositionClient    = n.serviceClient<dynamixel_msgs::GetGoalPosition>("/goalPosition/get", true);
+  getMovingStatusClient    = n.serviceClient<dynamixel_msgs::GetMovingStatus>("/movingStatus/get", true);
+  getPresentCurrentClient  = n.serviceClient<dynamixel_msgs::GetPresentCurrent>("/presentCurrent/get", true);
+  getPresentPositionClient = n.serviceClient<dynamixel_msgs::GetPresentPosition>("/presentPosition/get", true);
+  getPresentPwmClient      = n.serviceClient<dynamixel_msgs::GetPresentPwm>("/presentPwm/get", true);
+  getPresentVelocityClient = n.serviceClient<dynamixel_msgs::GetPresentVelocity>("/presentVelocity/get", true);
+  getTorqueEnableClient    = n.serviceClient<dynamixel_msgs::GetTorqueEnable>("/torqueEnable/get", true);
+  getOperatingModeClient   = n.serviceClient<dynamixel_msgs::GetOperatingMode>("/operatingMode/get", true);
   
-  setGoalCurrentClient = n.serviceClient<dynamixel_driver::SetGoalCurrent>("/goalCurrent/set", true);
-  setHomingOffsetClient = n.serviceClient<dynamixel_driver::SetHomingOffset>("/homingOffset/set", true);
-  setLedEnableClient = n.serviceClient<dynamixel_driver::SetLedEnable>("/ledEnable/set", true);
-  setTorqueEnableClient = n.serviceClient<dynamixel_driver::SetTorqueEnable>("/torqueEnable/set", true);
-  setGoalVelocityClient = n.serviceClient<dynamixel_driver::SetGoalVelocity>("/goalVelocity/set", true);
-  setGoalPositionClient = n.serviceClient<dynamixel_driver::SetGoalPosition>("/goalPosition/set", true);
-  setOperatingModeClient = n.serviceClient<dynamixel_driver::SetOperatingMode>("/operatingMode/set", true);
-  setProfileVelocityClient = n.serviceClient<dynamixel_driver::SetProfileVelocity>("/profileVelocity/set", true);
-  setVelocityLimitClient = n.serviceClient<dynamixel_driver::SetVelocityLimit>("/velocityLimit/set", true);
-  setVelocityPGainClient = n.serviceClient<dynamixel_driver::SetVelocityPGain>("/velocityPGain/set", true);
-  setVelocityIGainClient = n.serviceClient<dynamixel_driver::SetVelocityIGain>("/velocityIGain/set", true);
+  setGoalCurrentClient = n.serviceClient<dynamixel_msgs::SetGoalCurrent>("/goalCurrent/set", true);
+  setHomingOffsetClient = n.serviceClient<dynamixel_msgs::SetHomingOffset>("/homingOffset/set", true);
+  setLedEnableClient = n.serviceClient<dynamixel_msgs::SetLedEnable>("/ledEnable/set", true);
+  setTorqueEnableClient = n.serviceClient<dynamixel_msgs::SetTorqueEnable>("/torqueEnable/set", true);
+  setGoalVelocityClient = n.serviceClient<dynamixel_msgs::SetGoalVelocity>("/goalVelocity/set", true);
+  setGoalPositionClient = n.serviceClient<dynamixel_msgs::SetGoalPosition>("/goalPosition/set", true);
+  setOperatingModeClient = n.serviceClient<dynamixel_msgs::SetOperatingMode>("/operatingMode/set", true);
+  setProfileVelocityClient = n.serviceClient<dynamixel_msgs::SetProfileVelocity>("/profileVelocity/set", true);
+  setVelocityLimitClient = n.serviceClient<dynamixel_msgs::SetVelocityLimit>("/velocityLimit/set", true);
+  setVelocityPGainClient = n.serviceClient<dynamixel_msgs::SetVelocityPGain>("/velocityPGain/set", true);
+  setVelocityIGainClient = n.serviceClient<dynamixel_msgs::SetVelocityIGain>("/velocityIGain/set", true);
 
   return;
 
@@ -55,7 +57,7 @@ void init_services(ros::NodeHandle n)
 
 int32_t getGoalPosition()
 {
-  dynamixel_driver::GetGoalPosition srv;
+  dynamixel_msgs::GetGoalPosition srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -76,7 +78,7 @@ int32_t getGoalPosition()
 
 int32_t getGoalReached(uint8_t *goalReached)
 {
-  dynamixel_driver::GetMovingStatus srv;
+  dynamixel_msgs::GetMovingStatus srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -86,8 +88,8 @@ int32_t getGoalReached(uint8_t *goalReached)
 
     //ROS_INFO("getGoalReached successful");
 
-    if ( (srv.response.profileOngoing == dynamixel_driver::GetMovingStatus::Response::PROFILE_COMPLETED) &&
-         (srv.response.inPosition     == dynamixel_driver::GetMovingStatus::Response::ARRIVED)            )
+    if ( (srv.response.profileOngoing == dynamixel_msgs::GetMovingStatus::Response::PROFILE_COMPLETED) &&
+         (srv.response.inPosition     == dynamixel_msgs::GetMovingStatus::Response::ARRIVED)            )
     {
       *goalReached = 1;
     }
@@ -107,7 +109,7 @@ int32_t getGoalReached(uint8_t *goalReached)
 
 int32_t getPresentPwm(float *presentPwm)
 {
-  dynamixel_driver::GetPresentPwm srv;
+  dynamixel_msgs::GetPresentPwm srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -128,7 +130,7 @@ int32_t getPresentPwm(float *presentPwm)
 
 int32_t getPresentVelocity(int32_t *presentVelocity)
 {
-  dynamixel_driver::GetPresentVelocity srv;
+  dynamixel_msgs::GetPresentVelocity srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -149,7 +151,7 @@ int32_t getPresentVelocity(int32_t *presentVelocity)
 
 int32_t getPresentCurrent(float *presentCurrent)
 {
-  dynamixel_driver::GetPresentCurrent srv;
+  dynamixel_msgs::GetPresentCurrent srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -169,7 +171,7 @@ int32_t getPresentCurrent(float *presentCurrent)
 
 int32_t getPresentPosition(int32_t *presentPosition)
 {
-  dynamixel_driver::GetPresentPosition srv;
+  dynamixel_msgs::GetPresentPosition srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -189,7 +191,7 @@ int32_t getPresentPosition(int32_t *presentPosition)
 
 int32_t getTorqueEnabled(uint8_t *torqueEnable)
 {
-  dynamixel_driver::GetTorqueEnable srv;
+  dynamixel_msgs::GetTorqueEnable srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -209,7 +211,7 @@ int32_t getTorqueEnabled(uint8_t *torqueEnable)
 
 int32_t getOperatingMode(uint8_t *operatingMode)
 {
-  dynamixel_driver::GetOperatingMode srv;
+  dynamixel_msgs::GetOperatingMode srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -232,7 +234,7 @@ int32_t getOperatingMode(uint8_t *operatingMode)
 int32_t setGoalCurrent(uint16_t goalCurrent)
 {
 
-  dynamixel_driver::SetGoalCurrent srv;
+  dynamixel_msgs::SetGoalCurrent srv;
 
 
   // Set the dynamixel ID
@@ -255,7 +257,7 @@ int32_t setGoalCurrent(uint16_t goalCurrent)
 int32_t setHomingOffset(int32_t homingOffset)
 {
 
-  dynamixel_driver::SetHomingOffset srv;
+  dynamixel_msgs::SetHomingOffset srv;
 
 
   // Set the dynamixel ID
@@ -278,7 +280,7 @@ int32_t setHomingOffset(int32_t homingOffset)
 int32_t setTorqueEnable(uint8_t enable)
 {
 
-  dynamixel_driver::SetTorqueEnable srv;
+  dynamixel_msgs::SetTorqueEnable srv;
 
 
   // Set the dynamixel ID
@@ -302,7 +304,7 @@ int32_t setOperatingMode(uint8_t mode)
 {
 
   // Change the mode
-  dynamixel_driver::SetOperatingMode srv;
+  dynamixel_msgs::SetOperatingMode srv;
   srv.request.id = _servo_id;
   srv.request.operatingMode = mode;
 
@@ -322,7 +324,7 @@ int32_t setOperatingMode(uint8_t mode)
 int32_t setGoalVelocity(int32_t speed)
 {
 
-  dynamixel_driver::SetGoalVelocity srv;
+  dynamixel_msgs::SetGoalVelocity srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -344,7 +346,7 @@ int32_t setGoalVelocity(int32_t speed)
 int32_t setGoalPosition(int32_t position)
 {
 
-  dynamixel_driver::SetGoalPosition srv;
+  dynamixel_msgs::SetGoalPosition srv;
 
   // Set the dynamixel ID
   srv.request.id = _servo_id;
@@ -366,7 +368,7 @@ int32_t setGoalPosition(int32_t position)
 
 int32_t setLED(uint8_t enable)
 {
-  dynamixel_driver::SetLedEnable srv;
+  dynamixel_msgs::SetLedEnable srv;
   srv.request.id = _servo_id;
   srv.request.ledEnable = enable;
 
@@ -386,7 +388,7 @@ int32_t setLED(uint8_t enable)
 
 int32_t setServoVelocityLimit(uint32_t velocityLimit)
 {
-  dynamixel_driver::SetVelocityLimit srv;
+  dynamixel_msgs::SetVelocityLimit srv;
   srv.request.id = _servo_id;
   srv.request.velocityLimit = velocityLimit;
 
@@ -406,7 +408,7 @@ int32_t setServoVelocityLimit(uint32_t velocityLimit)
 
 int32_t setProfileVelocity(uint32_t profileVelocity)
 {
-  dynamixel_driver::SetProfileVelocity srv;
+  dynamixel_msgs::SetProfileVelocity srv;
   srv.request.id = _servo_id;
   srv.request.profileVelocity = profileVelocity;
 
@@ -427,7 +429,7 @@ int32_t setProfileVelocity(uint32_t profileVelocity)
 int32_t setServoVelocityPIGain(uint16_t P, uint16_t I)
 {
   // Set the P Gain
-  dynamixel_driver::SetVelocityPGain srv1;
+  dynamixel_msgs::SetVelocityPGain srv1;
   srv1.request.id = _servo_id;
   srv1.request.velocityPGain = P;
 
@@ -442,7 +444,7 @@ int32_t setServoVelocityPIGain(uint16_t P, uint16_t I)
   }
 
   // Set the I Gain
-  dynamixel_driver::SetVelocityIGain srv2;
+  dynamixel_msgs::SetVelocityIGain srv2;
   srv2.request.id = _servo_id;
   srv2.request.velocityIGain = I;
 

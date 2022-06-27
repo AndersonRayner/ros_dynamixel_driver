@@ -2,34 +2,34 @@
 #include "dynamixel_driver/dynamixel_driver.h"
 
 // Get Includes
-#include "dynamixel_driver/GetGoalPosition.h"
-#include "dynamixel_driver/GetHomingOffset.h"
-#include "dynamixel_driver/GetModelInfo.h"
-#include "dynamixel_driver/GetModelNumber.h"
-#include "dynamixel_driver/GetMoving.h"
-#include "dynamixel_driver/GetMovingStatus.h"
-#include "dynamixel_driver/GetOperatingMode.h"
-#include "dynamixel_driver/GetPresentCurrent.h"
-#include "dynamixel_driver/GetPresentInputVoltage.h"
-#include "dynamixel_driver/GetPresentPosition.h"
-#include "dynamixel_driver/GetPresentPwm.h"
-#include "dynamixel_driver/GetPresentTemperature.h"
-#include "dynamixel_driver/GetPresentVelocity.h"
-#include "dynamixel_driver/GetRealtimeTick.h"
-#include "dynamixel_driver/GetTorqueEnable.h"
+#include "dynamixel_msgs/GetGoalPosition.h"
+#include "dynamixel_msgs/GetHomingOffset.h"
+#include "dynamixel_msgs/GetModelInfo.h"
+#include "dynamixel_msgs/GetModelNumber.h"
+#include "dynamixel_msgs/GetMoving.h"
+#include "dynamixel_msgs/GetMovingStatus.h"
+#include "dynamixel_msgs/GetOperatingMode.h"
+#include "dynamixel_msgs/GetPresentCurrent.h"
+#include "dynamixel_msgs/GetPresentInputVoltage.h"
+#include "dynamixel_msgs/GetPresentPosition.h"
+#include "dynamixel_msgs/GetPresentPwm.h"
+#include "dynamixel_msgs/GetPresentTemperature.h"
+#include "dynamixel_msgs/GetPresentVelocity.h"
+#include "dynamixel_msgs/GetRealtimeTick.h"
+#include "dynamixel_msgs/GetTorqueEnable.h"
 
 // Set Includes
-#include "dynamixel_driver/SetGoalCurrent.h"
-#include "dynamixel_driver/SetGoalPosition.h"
-#include "dynamixel_driver/SetGoalVelocity.h"
-#include "dynamixel_driver/SetHomingOffset.h"
-#include "dynamixel_driver/SetLedEnable.h"
-#include "dynamixel_driver/SetOperatingMode.h"
-#include "dynamixel_driver/SetProfileVelocity.h"
-#include "dynamixel_driver/SetTorqueEnable.h"
-#include "dynamixel_driver/SetVelocityLimit.h"
-#include "dynamixel_driver/SetVelocityPGain.h"
-#include "dynamixel_driver/SetVelocityIGain.h"
+#include "dynamixel_msgs/SetGoalCurrent.h"
+#include "dynamixel_msgs/SetGoalPosition.h"
+#include "dynamixel_msgs/SetGoalVelocity.h"
+#include "dynamixel_msgs/SetHomingOffset.h"
+#include "dynamixel_msgs/SetLedEnable.h"
+#include "dynamixel_msgs/SetOperatingMode.h"
+#include "dynamixel_msgs/SetProfileVelocity.h"
+#include "dynamixel_msgs/SetTorqueEnable.h"
+#include "dynamixel_msgs/SetVelocityLimit.h"
+#include "dynamixel_msgs/SetVelocityPGain.h"
+#include "dynamixel_msgs/SetVelocityIGain.h"
 
 // Get Services
 ros::ServiceServer getGoalPosition_srv;
@@ -63,8 +63,8 @@ ros::ServiceServer setVelocityIGain_srv;
 // GET CALLBACKS //
 
 bool getGoalPositionCallback(
-    dynamixel_driver::GetGoalPosition::Request &req,
-    dynamixel_driver::GetGoalPosition::Response &res)
+    dynamixel_msgs::GetGoalPosition::Request &req,
+    dynamixel_msgs::GetGoalPosition::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -88,8 +88,8 @@ bool getGoalPositionCallback(
 }
 
 bool getHomingOffsetCallback(
-    dynamixel_driver::GetHomingOffset::Request &req,
-    dynamixel_driver::GetHomingOffset::Response &res)
+    dynamixel_msgs::GetHomingOffset::Request &req,
+    dynamixel_msgs::GetHomingOffset::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -113,8 +113,8 @@ bool getHomingOffsetCallback(
 }
 
 bool getModelInfoCallback(
-    dynamixel_driver::GetModelInfo::Request &req,
-    dynamixel_driver::GetModelInfo::Response &res)
+    dynamixel_msgs::GetModelInfo::Request &req,
+    dynamixel_msgs::GetModelInfo::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -138,8 +138,8 @@ bool getModelInfoCallback(
 }
 
 bool getModelNumberCallback(
-    dynamixel_driver::GetModelNumber::Request &req,
-    dynamixel_driver::GetModelNumber::Response &res)
+    dynamixel_msgs::GetModelNumber::Request &req,
+    dynamixel_msgs::GetModelNumber::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -163,8 +163,8 @@ bool getModelNumberCallback(
 }
 
 bool getMovingCallback(
-    dynamixel_driver::GetMoving::Request &req,
-    dynamixel_driver::GetMoving::Response &res)
+    dynamixel_msgs::GetMoving::Request &req,
+    dynamixel_msgs::GetMoving::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -188,8 +188,8 @@ bool getMovingCallback(
 }
 
 bool getMovingStatusCallback(
-    dynamixel_driver::GetMovingStatus::Request &req,
-    dynamixel_driver::GetMovingStatus::Response &res)
+    dynamixel_msgs::GetMovingStatus::Request &req,
+    dynamixel_msgs::GetMovingStatus::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -221,8 +221,8 @@ bool getMovingStatusCallback(
 }
 
 bool getOperatingModeCallback(
-    dynamixel_driver::GetOperatingMode::Request &req,
-    dynamixel_driver::GetOperatingMode::Response &res)
+    dynamixel_msgs::GetOperatingMode::Request &req,
+    dynamixel_msgs::GetOperatingMode::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -246,8 +246,8 @@ bool getOperatingModeCallback(
 }
 
 bool getPresentCurrentCallback(
-    dynamixel_driver::GetPresentCurrent::Request &req,
-    dynamixel_driver::GetPresentCurrent::Response &res)
+    dynamixel_msgs::GetPresentCurrent::Request &req,
+    dynamixel_msgs::GetPresentCurrent::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -271,8 +271,8 @@ bool getPresentCurrentCallback(
 }
 
 bool getPresentInputVoltageCallback(
-    dynamixel_driver::GetPresentInputVoltage::Request &req,
-    dynamixel_driver::GetPresentInputVoltage::Response &res)
+    dynamixel_msgs::GetPresentInputVoltage::Request &req,
+    dynamixel_msgs::GetPresentInputVoltage::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -296,8 +296,8 @@ bool getPresentInputVoltageCallback(
 }
 
 bool getPresentPositionCallback(
-    dynamixel_driver::GetPresentPosition::Request &req,
-    dynamixel_driver::GetPresentPosition::Response &res)
+    dynamixel_msgs::GetPresentPosition::Request &req,
+    dynamixel_msgs::GetPresentPosition::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -321,8 +321,8 @@ bool getPresentPositionCallback(
 }
 
 bool getPresentPwmCallback(
-    dynamixel_driver::GetPresentPwm::Request &req,
-    dynamixel_driver::GetPresentPwm::Response &res)
+    dynamixel_msgs::GetPresentPwm::Request &req,
+    dynamixel_msgs::GetPresentPwm::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -346,8 +346,8 @@ bool getPresentPwmCallback(
 }
 
 bool getPresentTemperatureCallback(
-    dynamixel_driver::GetPresentTemperature::Request &req,
-    dynamixel_driver::GetPresentTemperature::Response &res)
+    dynamixel_msgs::GetPresentTemperature::Request &req,
+    dynamixel_msgs::GetPresentTemperature::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -372,8 +372,8 @@ bool getPresentTemperatureCallback(
 }
 
 bool getPresentVelocityCallback(
-    dynamixel_driver::GetPresentVelocity::Request &req,
-    dynamixel_driver::GetPresentVelocity::Response &res)
+    dynamixel_msgs::GetPresentVelocity::Request &req,
+    dynamixel_msgs::GetPresentVelocity::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -397,8 +397,8 @@ bool getPresentVelocityCallback(
 }
 
 bool getRealtimeTickCallback(
-    dynamixel_driver::GetRealtimeTick::Request &req,
-    dynamixel_driver::GetRealtimeTick::Response &res)
+    dynamixel_msgs::GetRealtimeTick::Request &req,
+    dynamixel_msgs::GetRealtimeTick::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -422,8 +422,8 @@ bool getRealtimeTickCallback(
 }
 
 bool getTorqueEnableCallback(
-    dynamixel_driver::GetTorqueEnable::Request &req,
-    dynamixel_driver::GetTorqueEnable::Response &res)
+    dynamixel_msgs::GetTorqueEnable::Request &req,
+    dynamixel_msgs::GetTorqueEnable::Response &res)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -449,8 +449,8 @@ bool getTorqueEnableCallback(
 // SET CALLBACKS //
 
 bool setGoalCurrentCallback(
-    dynamixel_driver::SetGoalCurrent::Request &req,
-    dynamixel_driver::SetGoalCurrent::Response &res)
+    dynamixel_msgs::SetGoalCurrent::Request &req,
+    dynamixel_msgs::SetGoalCurrent::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -475,8 +475,8 @@ bool setGoalCurrentCallback(
 }
 
 bool setGoalPositionCallback(
-    dynamixel_driver::SetGoalPosition::Request &req,
-    dynamixel_driver::SetGoalPosition::Response &res)
+    dynamixel_msgs::SetGoalPosition::Request &req,
+    dynamixel_msgs::SetGoalPosition::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -501,8 +501,8 @@ bool setGoalPositionCallback(
 }
 
 bool setGoalVelocityCallback(
-    dynamixel_driver::SetGoalVelocity::Request &req,
-    dynamixel_driver::SetGoalVelocity::Response &res)
+    dynamixel_msgs::SetGoalVelocity::Request &req,
+    dynamixel_msgs::SetGoalVelocity::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -527,8 +527,8 @@ bool setGoalVelocityCallback(
 }
 
 bool setHomingOffsetCallback(
-    dynamixel_driver::SetHomingOffset::Request &req,
-    dynamixel_driver::SetHomingOffset::Response &res)
+    dynamixel_msgs::SetHomingOffset::Request &req,
+    dynamixel_msgs::SetHomingOffset::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -553,8 +553,8 @@ bool setHomingOffsetCallback(
 }
 
 bool setLedEnableCallback(
-    dynamixel_driver::SetLedEnable::Request &req,
-    dynamixel_driver::SetLedEnable::Response &res)
+    dynamixel_msgs::SetLedEnable::Request &req,
+    dynamixel_msgs::SetLedEnable::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -579,8 +579,8 @@ bool setLedEnableCallback(
 }
 
 bool setOperatingModeCallback(
-    dynamixel_driver::SetOperatingMode::Request &req,
-    dynamixel_driver::SetOperatingMode::Response &res)
+    dynamixel_msgs::SetOperatingMode::Request &req,
+    dynamixel_msgs::SetOperatingMode::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -605,8 +605,8 @@ bool setOperatingModeCallback(
 }
 
 bool setProfileVelocityCallback(
-    dynamixel_driver::SetProfileVelocity::Request &req,
-    dynamixel_driver::SetProfileVelocity::Response &res)
+    dynamixel_msgs::SetProfileVelocity::Request &req,
+    dynamixel_msgs::SetProfileVelocity::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -631,8 +631,8 @@ bool setProfileVelocityCallback(
 }
 
 bool setTorqueEnableCallback(
-    dynamixel_driver::SetTorqueEnable::Request &req,
-    dynamixel_driver::SetTorqueEnable::Response &res)
+    dynamixel_msgs::SetTorqueEnable::Request &req,
+    dynamixel_msgs::SetTorqueEnable::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -657,8 +657,8 @@ bool setTorqueEnableCallback(
 }
 
 bool setVelocityLimitCallback(
-    dynamixel_driver::SetVelocityLimit::Request &req,
-    dynamixel_driver::SetVelocityLimit::Response &res)
+    dynamixel_msgs::SetVelocityLimit::Request &req,
+    dynamixel_msgs::SetVelocityLimit::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -683,8 +683,8 @@ bool setVelocityLimitCallback(
 }
 
 bool setVelocityPGainCallback(
-    dynamixel_driver::SetVelocityPGain::Request &req,
-    dynamixel_driver::SetVelocityPGain::Response &res)
+    dynamixel_msgs::SetVelocityPGain::Request &req,
+    dynamixel_msgs::SetVelocityPGain::Response &res)
 {
 
   uint8_t dxl_error = 0;
@@ -709,8 +709,8 @@ bool setVelocityPGainCallback(
 }
 
 bool setVelocityIGainCallback(
-    dynamixel_driver::SetVelocityIGain::Request &req,
-    dynamixel_driver::SetVelocityIGain::Response &res)
+    dynamixel_msgs::SetVelocityIGain::Request &req,
+    dynamixel_msgs::SetVelocityIGain::Response &res)
 {
 
   uint8_t dxl_error = 0;

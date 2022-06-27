@@ -1,0 +1,26 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		// Dynamixel driver examples launch
+		{
+			"name": "(DEBUG) LED Toggle",
+			"type": "ros",
+			"request": "launch",
+			"target": "${workspaceFolder}/launch/led_toggle.launch",
+			"preLaunchTask": "catkin: debug", // tasks.json
+		},
+
+		{
+			"name": "(DEBUG) Drive Mode Test",
+			"type": "ros",
+			"request": "launch",
+			"target": "${workspaceFolder}/launch/drive_mode.launch",
+			"preLaunchTask": "catkin: debug", // tasks.json
+		},
+
+
+	]
+}
